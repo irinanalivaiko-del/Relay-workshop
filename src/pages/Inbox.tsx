@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { InboxHeader } from "@/components/feedback/InboxHeader";
 import { FeedbackFilters, type FilterState } from "@/components/feedback/FeedbackFilters";
 import { FeedbackList } from "@/components/feedback/FeedbackList";
@@ -49,6 +50,7 @@ export default function Inbox() {
     const nextVisible = remaining.filter((item) => matches(item, filters));
     setItems(remaining);
     setSelectedId(nextVisible[0]?.id ?? null);
+    toast.success("Feedback deleted");
   }
 
   function handleStatusChange(id: string, status: FeedbackStatus) {
